@@ -1,0 +1,10 @@
+#
+# Default config for scotty
+# Please fill in your settings and uncomment SCP_TARGET and HTTP_ROOT.
+#
+
+# where to copy the files to
+#SCP_TARGET="username@yourhost.com:public_html/share/"
+
+#The URL to reach the SCP_TARGET location from the web
+#HTML_ROOT="https://yourhost.com/~username/share/"
