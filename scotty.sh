@@ -22,6 +22,18 @@ Icon=${SELFDIR}/icon.svg
 EOF
 chmod +x "${launcher}"
 }
+
+if [ ! -f "${CONFIG_FILE}" ]; then
+    echo
+    echo "Creating config template at ${CONFIG_FILE}"
+    echo "Edit this file and retry."
+    echo
+    echo "You can also create a launcher icon on the desktop by running"
+    echo "${SELF} -makeLauncher"
+    mkdir -p $(dirname "${CONFIG_FILE}") && cp "${SELFDIR}/config_example" "${CONFIG_FILE}"
+    exit 1
+fi
+
 if [ $# -ne 1 ]; then
     echo "Usage: scotty.sh file-to-upload"
     echo "or"
@@ -35,16 +47,6 @@ if [ "${1}" == "-makeLauncher" ]; then
     exit 0
 fi
 
-if [ ! -f "${CONFIG_FILE}" ]; then
-    echo
-    echo "Creating config template at ${CONFIG_FILE}"
-    echo "Edit this file and retry."
-    echo
-    echo "You can also create a launcher icon on the desktop by running"
-    echo "${SELF} -makeLauncher"
-    mkdir -p $(dirname "${CONFIG_FILE}") && cp "${SELFDIR}/config_example" "${CONFIG_FILE}"
-    exit 1
-fi
 
 file="${1}"
 
